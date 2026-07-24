@@ -220,8 +220,11 @@ h1, h2, h3, .logo {
 .stream-icon svg { width: 26px; height: 26px; }
 /* Brand colours for the icon circles */
 .yt    { background: #FF0000; }
-.spot  { background: #1DB954; }
 .apple { background: linear-gradient(135deg, #FB5C74, #FA243C); }
+/* Spotify's mark is already a circle — let it BE the badge (no nested disc),
+   so it reads as the real Spotify icon instead of a white dot on green. */
+.stream-icon.spot { background: transparent; color: #1DB954; }
+.stream-icon.spot svg { width: 54px; height: 54px; }
 
 /* Primary actions: Follow on Spotify + Subscribe on YouTube (brand-coloured) */
 .follow-wrap {
@@ -233,8 +236,12 @@ h1, h2, h3, .logo {
 }
 .follow-wrap .btn-listen { gap: 0.55rem; }
 .follow-wrap .btn-listen svg { flex: none; }
-.btn-spotify { background: #1DB954; color: #fff; }
-.btn-youtube { background: #FF0000; color: #fff; }
+/* Combined-class selectors so the brand colours beat the generic .btn-listen
+   background regardless of source order. */
+.btn-listen.btn-spotify { background: #1DB954; color: #fff; }
+.btn-listen.btn-youtube { background: #FF0000; color: #fff; }
+.btn-listen.btn-spotify:hover,
+.btn-listen.btn-youtube:hover { opacity: 0.9; }
 .stream-or {
     text-align: center;
     margin: 0.4rem 0 1.5rem;

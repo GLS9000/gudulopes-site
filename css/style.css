@@ -6,6 +6,17 @@
    under ":root". Change a value there and it updates everywhere on the site.
    ========================================================================== */
 
+/* --- SELF-HOSTED FONTS ---------------------------------------------------- */
+/* Served from assets/fonts/ — no request to Google, GDPR-friendly. To add a
+   weight later, drop its .woff2 in assets/fonts/ and add an @font-face here. */
+@font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/cinzel-400.woff2') format('woff2'); }
+@font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/cinzel-700.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 300; font-display: swap; src: url('../assets/fonts/lato-300.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/lato-400.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: italic; font-weight: 400; font-display: swap; src: url('../assets/fonts/lato-400italic.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/lato-700.woff2') format('woff2'); }
+@font-face { font-family: 'Lato'; font-style: italic; font-weight: 700; font-display: swap; src: url('../assets/fonts/lato-700italic.woff2') format('woff2'); }
+
 /* --- COLOUR & TYPE TOKENS ------------------------------------------------ */
 /* EDIT: COLOURS — change these six values to re-skin the whole site.        */
 :root {
@@ -195,15 +206,17 @@ h1, h2, h3, .logo {
     text-align: center;
 }
 .stream-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 1.6rem;
 }
 .stream-link {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.6rem;
+    width: 76px;
     text-decoration: none;
     color: var(--text);
     font-size: 0.8rem;
@@ -221,6 +234,8 @@ h1, h2, h3, .logo {
 /* Brand colours for the icon circles */
 .yt    { background: #FF0000; }
 .apple { background: linear-gradient(135deg, #FB5C74, #FA243C); }
+.sc    { background: #FF5500; }   /* SoundCloud */
+.ytm   { background: #FF0000; }   /* YouTube Music */
 /* Spotify's mark is already a circle — let it BE the badge (no nested disc),
    so it reads as the real Spotify icon instead of a white dot on green. */
 .stream-icon.spot { background: transparent; color: #1DB954; }
@@ -297,11 +312,8 @@ h1, h2, h3, .logo {
 .bio-portrait { margin: 0 0 1.75rem; }
 .bio-portrait img {
     width: 100%;
-    border-radius: 12px;
-    /* The photo's black background melts into the page; a hairline + subtle
-       fade at the base keeps it from looking like a hard-cropped box. */
-    -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
-            mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+    display: block;
+    /* Transparent cutout — the figure sits directly on the page, no box. */
 }
 .bio-text p:last-child { margin-bottom: 0; }
 @media (min-width: 720px) {
@@ -549,8 +561,11 @@ footer p { color: var(--text-muted); font-size: 0.85rem; }
     letter-spacing: 0.02em; transition: opacity 0.2s;
 }
 .btn-listen:hover { opacity: 0.88; }
-/* Row of streaming buttons; Apple as a secondary outline for hierarchy. */
+/* Row of platform-branded streaming buttons (Spotify green, Apple Music gradient). */
 .listen-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+.btn-listen svg { flex: none; }
+.btn-listen.btn-apple { background: linear-gradient(135deg, #FB5C74, #FA243C); color: #fff; }
+/* legacy outline variant, kept for reuse */
 .btn-listen--alt { background: transparent; color: var(--text); border: 1px solid var(--line); }
 .btn-listen--alt:hover { opacity: 1; border-color: var(--accent); }
 .embed-slot {

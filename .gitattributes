@@ -1,0 +1,11 @@
+# Normalize all text files to LF in the repo and on checkout everywhere.
+# This stops Windows (CRLF) vs GitHub (LF) from showing phantom "modified" files.
+* text=auto eol=lf
+
+# Never alter the bytes of binary assets.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary

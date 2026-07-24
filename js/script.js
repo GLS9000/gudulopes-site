@@ -29,3 +29,49 @@
     }
   });
 })();
+
+(function () {
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) return;
+  document.querySelectorAll('a[href*="open.spotify.com"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var webUrl = link.href;
+      var m = webUrl.match(/open\.spotify\.com\/(artist|album|track|playlist)\/([A-Za-z0-9]+)/);
+      if (!m) return;                 // unrecognised link: behave normally
+      e.preventDefault();
+      var appUrl = 'spotify:' + m[1] + ':' + m[2];
+      var didHide = false;
+      function onHide() { didHide = true; }   // app opened -> cancel fallback
+      document.addEventListener('visibilitychange', onHide);
+      window.addEventListener('pagehide', onHide);
+      window.location.href = appUrl;           // try the app
+      setTimeout(function () {                  // fall back if app didn't open
+        document.removeEventListener('visibilitychange', onHide);
+        window.removeEventListener('pagehide', onHide);
+        if (!didHide) window.location.href = webUrl;
+      }, 1200);
+    });
+  });
+})();
+
+(function () {
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) return;
+  document.querySelectorAll('a[href*="music.apple.com"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var webUrl = link.href;
+      var appUrl = webUrl.replace(/^https?:\/\//, 'music://'); // Apple Music app scheme
+      e.preventDefault();
+      var didHide = false;
+      function onHide() { didHide = true; }        // app opened -> cancel fallback
+      document.addEventListener('visibilitychange', onHide);
+      window.addEventListener('pagehide', onHide);
+      window.location.href = appUrl;                // try the app
+      setTimeout(function () {                       // fall back if app didn't open
+        document.removeEventListener('visibilitychange', onHide);
+        window.removeEventListener('pagehide', onHide);
+        if (!didHide) window.location.href = webUrl;
+      }, 1200);
+    });
+  });
+})();

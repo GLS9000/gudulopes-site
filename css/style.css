@@ -201,22 +201,28 @@ h1, h2, h3, .logo {
     max-height: 340px;
     display: block;
 }
-/* Side-by-side on wider screens: name/tagline left, conductor figure right. */
+/* Mobile keeps the figure under the name (looks great there). On desktop the
+   figure moves down to "conduct" the support card instead (see .stream-figure). */
 @media (min-width: 860px) {
-    .hero-inner {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: clamp(2rem, 5vw, 4rem);
-        text-align: left;
-    }
-    .hero-text { max-width: 26rem; }
-    .hero .tagline { margin: 0; }
-    .hero-figure img { max-height: 460px; }
+    .hero-figure { display: none; }
 }
 
 /* --- STREAMING CARD ------------------------------------------------------- */
 .stream-section { padding: 0 1.25rem clamp(2.5rem, 6vw, 4rem); }
+/* Stage lets a desktop-only conductor stand beside the support card. */
+.stream-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+.stream-figure { display: none; margin: 0; }
+@media (min-width: 900px) {
+    .stream-figure { display: block; flex: none; align-self: flex-end; }
+    .stream-figure img { height: min(64vh, 520px); width: auto; display: block; }
+}
 .stream-card {
     background: var(--bg-elevated);
     border: 1px solid var(--line);

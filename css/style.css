@@ -223,12 +223,21 @@ h1, h2, h3, .logo {
 .spot  { background: #1DB954; }
 .apple { background: linear-gradient(135deg, #FB5C74, #FA243C); }
 
-/* Primary action: Follow on Spotify (emphasised over the listen icons) */
-.follow-wrap { text-align: center; margin-bottom: 1.5rem; }
-.btn-follow { gap: 0.55rem; }
-.btn-follow svg { flex: none; }
+/* Primary actions: Follow on Spotify + Subscribe on YouTube (brand-coloured) */
+.follow-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+}
+.follow-wrap .btn-listen { gap: 0.55rem; }
+.follow-wrap .btn-listen svg { flex: none; }
+.btn-spotify { background: #1DB954; color: #fff; }
+.btn-youtube { background: #FF0000; color: #fff; }
 .stream-or {
-    margin-top: 1rem;
+    text-align: center;
+    margin: 0.4rem 0 1.5rem;
     color: var(--text-muted);
     font-size: 0.72rem;
     letter-spacing: 0.2em;

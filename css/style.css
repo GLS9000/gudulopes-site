@@ -329,7 +329,8 @@ h1, h2, h3, .logo {
 .hero-banner {
     position: relative;
     width: 100%;
-    height: clamp(340px, 52vw, 580px);
+    aspect-ratio: 2 / 1;           /* matches the pre-cropped banner (1800×900) */
+    max-height: 620px;
     overflow: hidden;
     background: #000;
     border-bottom: 1px solid var(--line);
@@ -337,7 +338,7 @@ h1, h2, h3, .logo {
 .hero-banner img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 60%;   /* frames the face + Earth's horizon, trims the empty top */
+    object-position: center;
     display: block;
 }
 /* Soft fade at the base so the image melts into the page below it. */

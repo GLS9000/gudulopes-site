@@ -264,6 +264,28 @@ h1, h2, h3, .logo {
 .bio p { color: var(--text-muted); margin-bottom: 1.1rem; font-size: 1.05rem; }
 .bio p:last-child { margin-bottom: 0; }
 
+/* Two-column band: portrait + text. Stacks on mobile, side-by-side ≥720px. */
+.bio-layout { max-width: 900px; }
+.bio-portrait { margin: 0 0 1.75rem; }
+.bio-portrait img {
+    width: 100%;
+    border-radius: 12px;
+    /* The photo's black background melts into the page; a hairline + subtle
+       fade at the base keeps it from looking like a hard-cropped box. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+}
+.bio-text p:last-child { margin-bottom: 0; }
+@media (min-width: 720px) {
+    .bio-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 2.5rem;
+        align-items: center;
+    }
+    .bio-portrait { margin: 0; }
+}
+
 /* --- FOUR DOORS GRID ------------------------------------------------------ */
 .doors-grid {
     display: grid;
@@ -303,6 +325,30 @@ h1, h2, h3, .logo {
     color: var(--accent);
 }
 
+/* --- PAGE HERO BANNER (full-bleed image + title overlay) ------------------ */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: clamp(340px, 52vw, 580px);
+    overflow: hidden;
+    background: #000;
+    border-bottom: 1px solid var(--line);
+}
+.hero-banner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 60%;   /* frames the face + Earth's horizon, trims the empty top */
+    display: block;
+}
+/* Soft fade at the base so the image melts into the page below it. */
+.hero-banner::after {
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: 25%;
+    background: linear-gradient(to top, var(--bg), transparent);
+    pointer-events: none;
+}
+
 /* --- DEDICATED DOOR PAGES ------------------------------------------------- */
 .page-header { text-align: center; padding: clamp(3rem, 8vw, 5rem) 1.25rem 1rem; }
 .page-header .roman { color: var(--accent); letter-spacing: 0.25em; font-size: 0.85rem; }
@@ -339,6 +385,26 @@ footer {
 }
 footer .socials { margin-bottom: 1.5rem; }
 footer p { color: var(--text-muted); font-size: 0.85rem; }
+
+/* --- FOOTER BRAND ROW (label / persona logos) ---------------------------- */
+/* One logo now (label), centred. When the Innah Chill Do mark is added this
+   row holds two, space-between, so they sit toward the outer corners. */
+.footer-brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem 3rem;
+    flex-wrap: wrap;
+    margin: 0 auto 1.75rem;
+    max-width: 560px;
+}
+/* Both logos share the same height. */
+.footer-brand img { width: auto; height: 100px; opacity: 0.9; transition: opacity 0.2s; }
+.footer-brand img:hover { opacity: 1; }
+/* When the row wraps on narrow screens, centre the stack instead of splitting. */
+@media (max-width: 460px) {
+    .footer-brand { justify-content: center; gap: 1.5rem; }
+}
 
 /* ==========================================================================
    ADDITIONS — umbrella/wings structure, album-style door pages, Bandcamp

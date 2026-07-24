@@ -24,22 +24,48 @@ decisions already locked in._
 
 ---
 
-## 1. How the owner now works (important — avoid "two sources of truth")
+## 1. How the owner works (CONFIRMED — both modes are in play)
 
-The live site lives in GitHub. The recommended setup going forward:
+The live site lives in GitHub. The owner edits it **two ways, interchangeably** —
+sometimes personally, sometimes by asking Claude Cowork — and **both work on the
+same local folder** that GitHub Desktop keeps synced. So these aren't competing
+setups; they're two hands on one copy.
 
-1. **GitHub Desktop** has the repo cloned to a local folder = the single synced
-   copy. (Repo: `GLS9000/gudulopes-site`, branch `main`.)
-2. **Claude Cowork is pointed at that same local folder** to read/edit files.
-3. Loop each session: **Pull** (get latest) → edit → check the **Changes** list
-   → **Commit to main** → **Push**. Site updates in ~1 minute.
+The toolchain (Windows):
+- **GitHub Desktop** = the sync bridge (Pull down / Commit + Push up). Repo:
+  `GLS9000/gudulopes-site`, branch `main`. This is what makes changes live,
+  no matter who made them.
+- **The local cloned folder** = the single source of truth that gets edited.
+- **Editor, mode A — the owner:** edits files themselves in **Visual Studio
+  Code** (installed, comfortable in it).
+- **Editor, mode B — Claude Cowork:** pointed at that **same folder** to read and
+  edit the files.
+
+Everyday loop (identical for both modes):
+1. **GitHub Desktop → Fetch origin → Pull** (get latest before editing).
+2. Edit + save the files — either in VS Code (owner) or via Cowork.
+3. **GitHub Desktop → review the Changes diff → Commit to main → Push.** Live in
+   ~1 minute.
 
 Golden rules to state/enforce:
-- **Pull before editing** (the owner sometimes also edits on github.com).
-- **Edit in ONE place** going forward (the synced folder) to avoid conflicts.
-- **Editing files alone does nothing to the live site until Push.**
-- Claude cannot see the folder/Cowork/Desktop unless the files are actually in
-  its workspace — confirm files are present before assuming.
+- **One hand at a time.** Don't have the owner editing in VS Code and Cowork
+  editing the same files in the same session — finish/commit one before the
+  other starts.
+- **Always Pull first**, every session, in either mode. (If Cowork edited and
+  pushed, the owner must Pull before opening VS Code, and vice-versa — otherwise
+  they edit a stale copy and create a merge conflict.)
+- **Editing/saving does nothing to the live site until Push.**
+- **Prefer local editing over github.com.** The owner *can* still edit on the
+  website in a pinch, but if they do, Pull afterwards so the local folder catches
+  up. Simplest is to keep everything local.
+- Images: drop straight into `assets/images/` in the folder (no web upload).
+  Shrink first (see §7).
+- When helping in mode B (Cowork), Claude edits the files directly. When helping
+  the owner in mode A, give **exact file + what to change** so they can do it in
+  VS Code. Claude can't see the folder unless the files are actually provided.
+- Useful VS Code tools for the owner: **Live Preview / Live Server** extension
+  (see edits render live), `Ctrl+Shift+F` (search across all files),
+  `Shift+Alt+F` (tidy formatting).
 
 ---
 
@@ -176,7 +202,8 @@ recipe above is what was used originally.
 
 ## 8. Suggested first move in the new session
 
-1. Confirm the workspace/folder is the **freshly-pulled repo** (contains `CNAME`,
+1. Confirm the workspace/folder is the **freshly-pulled GitHub-Desktop-synced
+   folder** — Pull first (see §1), then confirm it contains `CNAME`,
    `index.html` at top level, `css/ js/ assets/`, all the `.html` pages,
    `HANDOFF.md`).
 2. Have the owner paste their **list of new ideas** and drop in **new images**.

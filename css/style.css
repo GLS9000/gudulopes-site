@@ -9,13 +9,12 @@
 /* --- SELF-HOSTED FONTS ---------------------------------------------------- */
 /* Served from assets/fonts/ — no request to Google, GDPR-friendly. To add a
    weight later, drop its .woff2 in assets/fonts/ and add an @font-face here. */
+/* Only the three faces that exist in assets/fonts/ are declared, so no 404s.
+   Italic (<em>) and any bold are synthesised from these by the browser. To get
+   true cuts later, add the .woff2 (e.g. lato-400italic) and its @font-face line. */
 @font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/cinzel-400.woff2') format('woff2'); }
-@font-face { font-family: 'Cinzel'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/cinzel-700.woff2') format('woff2'); }
-@font-face { font-family: 'Lato'; font-style: normal; font-weight: 300; font-display: swap; src: url('../assets/fonts/lato-300.woff2') format('woff2'); }
 @font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/lato-400.woff2') format('woff2'); }
-@font-face { font-family: 'Lato'; font-style: italic; font-weight: 400; font-display: swap; src: url('../assets/fonts/lato-400italic.woff2') format('woff2'); }
 @font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/lato-700.woff2') format('woff2'); }
-@font-face { font-family: 'Lato'; font-style: italic; font-weight: 700; font-display: swap; src: url('../assets/fonts/lato-700italic.woff2') format('woff2'); }
 
 /* --- COLOUR & TYPE TOKENS ------------------------------------------------ */
 /* EDIT: COLOURS — change these six values to re-skin the whole site.        */
@@ -463,24 +462,48 @@ footer p { color: var(--text-muted); font-size: 0.85rem; }
 .footer-contact a { color: var(--text-muted); text-decoration: none; letter-spacing: 0.02em; }
 .footer-contact a:hover { color: var(--accent); text-decoration: underline; }
 
-/* --- FOOTER BRAND ROW (label / persona logos) ---------------------------- */
-/* One logo now (label), centred. When the Innah Chill Do mark is added this
-   row holds two, space-between, so they sit toward the outer corners. */
-.footer-brand {
-    display: flex;
-    justify-content: space-between;
+/* --- FOOTER GRID — logos flank the socials / contact / copyright ---------- */
+/* Desktop: [Innah] [socials + contact + copyright] [Sagittarius].
+   Mobile: stacked — socials, contact, the two logos side by side, copyright.
+   Both layouts come from one markup via grid-template-areas. */
+.footer-grid {
+    display: grid;
+    gap: 1.25rem 1.5rem;
     align-items: center;
-    gap: 2rem 3rem;
-    flex-wrap: wrap;
-    margin: 0 auto 1.75rem;
-    max-width: 560px;
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "socials socials"
+        "contact contact"
+        "logoL   logoR"
+        "copy    copy";
 }
-/* Both logos share the same height. */
-.footer-brand img { width: auto; height: 100px; opacity: 0.9; transition: opacity 0.2s; }
-.footer-brand img:hover { opacity: 1; }
-/* When the row wraps on narrow screens, centre the stack instead of splitting. */
-@media (max-width: 460px) {
-    .footer-brand { justify-content: center; gap: 1.5rem; }
+.footer-grid .socials        { grid-area: socials; margin: 0; }
+.footer-grid .footer-contact { grid-area: contact; margin: 0; }
+.footer-grid .persona-logo   { grid-area: logoL; }
+.footer-grid .label-logo     { grid-area: logoR; }
+.footer-grid .footer-copy    { grid-area: copy; margin: 0; }
+.footer-grid .persona-logo,
+.footer-grid .label-logo {
+    justify-self: center;
+    width: auto;
+    height: 88px;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+.footer-grid img:hover { opacity: 1; }
+@media (min-width: 760px) {
+    .footer-grid {
+        grid-template-columns: auto 1fr auto;
+        column-gap: clamp(1.5rem, 6vw, 4rem);
+        grid-template-areas:
+            "logoL socials logoR"
+            "logoL contact logoR"
+            "logoL copy    logoR";
+    }
+    .footer-grid .persona-logo,
+    .footer-grid .label-logo { height: 104px; align-self: center; }
 }
 
 /* ==========================================================================

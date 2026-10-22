@@ -274,19 +274,28 @@ comments. Change a value, commit, whole site updates.
 
 ## 11. Changelog
 
-**2026-10-22 — v3.5: fixes from the October status check**
-- **Conductor gap closed.** `.hero-figure` now hides at 1100px, matching
-  `.stream-figure`. Before, the conductor vanished between 860px and 1100px.
-  The two breakpoints must stay equal (comment added in the CSS).
-- **Premiere bar added.** `.premiere-bar` styles in `css/style.css`, plus a
-  commented-out `<aside>` template at the top of `index.html`. Switch on per
-  premiere; wrap or delete again afterwards.
-- **"EMR" → "Eyes Moving Rapidly (EMR)"** on Door of Sleep (tracklist, heading,
-  video title), matching the official title.
+**2026-10-22 — v3.5: v3.4 merged onto the live repo + catalogue fixes**
+- The v3.3/v3.4 work below was prepared on an older copy of the site and
+  never pushed. Merged by hand onto the live repo, keeping everything added
+  since (banners, Idalina page, Sleep stories, real `og-image.png`, new footer).
+  The older copy's placeholder `og-image.png`, old footer and old bio were
+  **not** brought over.
+- **Conductor gap closed** (the v3.4 fix, now actually live): `.hero-figure`
+  hides at 1100px, matching `.stream-figure`.
+- **Premiere bar:** CSS added. The `<aside>` in `index.html` is shipped
+  **commented out** (not live with placeholder text as v3.3 described), so
+  nothing shows until you switch it on. Instructions are in the comment.
+- Premiere tip and "also add it to the door page" reminder added to the
+  homepage Watch comment.
+- **"EMR" → "Eyes Moving Rapidly (EMR)"** on Door of Sleep, matching the
+  official title.
 - **Door of Forgetting in release order:** Mist, No Escape, Descent into the
   Abyss, Tau, Contemplation. "Train Leaving" added as in progress, before the
   finale "Will You Let Me Go".
-- Stylesheet cache version bumped `v=14` → `v=15` on all pages.
+- Added `REVIEW-2026-10-22.md` (the v3.3 audit, archival). Note: it points to
+  `START-HERE_context.md`, which has since been removed, and its open items
+  4.1 (og-image) and 4.5 (Watch caption) are now resolved.
+- Stylesheet cache version bumped to `v=15` on all pages.
 
 **2026-10-22 — housekeeping (owner)**
 - Bio: "Cape Verde" → "Cabo Verde". `START-HERE_context.md` removed from the
@@ -295,9 +304,67 @@ comments. Change a value, commit, whole site updates.
 **2026-07-28/30 — banners, stories, Idalina Lopes page (owner)**
 - Hero banners for Door of Sleep, Door of Forgetting and Boku no Sekai.
 - Door of Sleep song stories and streaming buttons filled in.
-- New page `idalina-lopes.html` (in sitemap and footers).
-- Broken `VIDEO_ID` embeds on Madness/Death replaced with commented templates;
-  unused `@font-face` rules and duplicate portrait images removed.
+- Real `og-image.png` (portrait + title card) and homepage Watch caption.
+- New page `idalina-lopes.html` (in sitemap, nav and footers).
+- Footer redesigned as a grid with the two logos flanking the socials.
+
+_The two entries below were written on the older working copy; their fixes
+reached the live site through the 07-30 commits and v3.5 above._
+
+**2026-10-22 — v3.4: conductor breakpoint gap closed**
+- **Fixed a 240px window where the conductor figure disappeared.**
+  `.hero-figure` hid from `min-width: 860px` while `.stream-figure` only appeared
+  from `min-width: 1100px`, so between 860px and 1099px — small laptops, tablets
+  in landscape — neither was visible and the hero lost its signature element.
+  The hero figure now hides at `1100px`, matching the stream figure, so the two
+  hand over at the same point and the conductor is always on screen. **If either
+  breakpoint is ever changed, change both.**
+  (Moving `.stream-figure` down to 860px instead would have made the
+  absolutely-positioned figure overlap the support card at those widths — which
+  is presumably why 1100px was chosen for it originally.)
+- Documented the recurring release workflow in `REVIEW-2026-10-22.md` §3.4: the
+  homepage "Watch" slot is a rotating window holding one video, so each video
+  must also be added to its door page or it vanishes from the site when the next
+  release displaces it.
+- Bumped the stylesheet cache-buster to `style.css?v=14` on all pages.
+
+**2026-10-22 — v3.3: audit fixes + premiere bar**
+- **Removed six broken video embeds.** `door-of-madness.html` (2) and
+  `door-of-death.html` (4) still contained `embed/VIDEO_ID`, which renders live
+  as a black "Video unavailable" box. Each was replaced by a commented-out
+  one-line template, so the markup to paste back is still right there when a
+  video exists. Tracklists and the "Still to come" blocks already carry the
+  status, so nothing was lost visually.
+- **Removed four dead `@font-face` rules.** `css/style.css` declared
+  `cinzel-700`, `lato-300`, `lato-400italic` and `lato-700italic`, but those
+  `.woff2` files were never in `assets/fonts/` — so every page fired four 404s
+  and italics fell back to a non-matching system font. Only the three faces that
+  exist (`cinzel-400`, `lato-400`, `lato-700`) are now declared; the browser
+  synthesises bold display text and italics from them. If true italic/bold-display
+  cuts are wanted later, add the `.woff2` files and restore the rules.
+- **Deleted two unreferenced images:** `gudu-portrait.png` (706 KB) and
+  `gudu-portrait.jpg` (148 KB). Only `gudu-portrait.webp` is used. Image folder
+  went from ~1.7 MB to ~848 KB.
+- **Added a premiere/announcement bar** (`.premiere-bar` in the CSS, one
+  `<aside>` at the top of `index.html`, above the nav). Uses the existing colour
+  tokens. The `<aside>` is meant to be deleted after the event; the CSS can stay
+  for the next one. **It ships with placeholder date text and `PREMIERE_ID` —
+  fill both in or delete the block before pushing.**
+- Noted on the homepage "Watch" section that a premiere's video ID can go
+  straight into the embed: it shows YouTube's countdown beforehand and becomes
+  the finished video afterwards, with nothing to change back.
+- Bumped the stylesheet cache-buster to `style.css?v=13` on all pages.
+
+- Corrected the Door of Sleep tracklist in `START-HERE_context.md`: track 6 is
+  **In Loving Arms** (confirmed by the owner), not "Lullaby". The site was
+  already correct; only the notes were stale.
+- Added `REVIEW-2026-10-22.md` — the full audit: every finding, its severity,
+  what was fixed here, what is still open, and the premiere-link guidance.
+
+_Still open (needs owner input, deliberately not touched):_ `og-image.png` is
+still the text-only placeholder; no Door page has streaming buttons (the Boku
+page's `listen-actions` block is the pattern to copy). See
+`REVIEW-2026-10-22.md` §4 for the full open list.
 
 **2026-07-23 — v3.2: Sleep labelled "Album"**
 - Set Door of Sleep release line to "Album" per artist decision.

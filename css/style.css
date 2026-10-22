@@ -256,6 +256,16 @@ h1, h2, h3, .logo {
     transition: transform 0.2s;
 }
 .stream-link:hover { transform: translateY(-3px); }
+/* Phones: four icons don't fit on one line, so show a neat 2 × 2 grid
+   instead of 3 + a lonely 1. */
+@media (max-width: 479px) {
+    .stream-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 76px);
+        justify-content: center;
+        gap: 1.25rem 3rem;
+    }
+}
 .stream-icon {
     width: 54px; height: 54px;
     border-radius: 50%;
@@ -268,6 +278,7 @@ h1, h2, h3, .logo {
 .apple { background: linear-gradient(135deg, #FB5C74, #FA243C); }
 .sc    { background: #FF5500; }   /* SoundCloud */
 .ytm   { background: #FF0000; }   /* YouTube Music */
+.bc    { background: #1DA0C3; }   /* Bandcamp */
 /* Spotify's mark is already a circle — let it BE the badge (no nested disc),
    so it reads as the real Spotify icon instead of a white dot on green. */
 .stream-icon.spot { background: transparent; color: #1DB954; }

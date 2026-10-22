@@ -274,6 +274,15 @@ comments. Change a value, commit, whole site updates.
 
 ## 11. Changelog
 
+**2026-10-22 — v3.6: streaming card de-duplicated, Bandcamp added**
+- The "or streaming my music on" row no longer repeats Spotify and YouTube
+  (they are already the two Follow / Subscribe buttons above it). Row is now
+  Apple Music · YouTube Music · SoundCloud · **Bandcamp**.
+- This replaces the earlier rule "Bandcamp in the footer only, not in the
+  card" (owner's decision, 2026-10-22). Bandcamp stays in the footer too.
+- Phones (<480px): the four icons sit in a 2 × 2 grid instead of 3 + 1.
+- Stylesheet cache version bumped to `v=16` on all pages.
+
 **2026-10-22 — v3.5: v3.4 merged onto the live repo + catalogue fixes**
 - The v3.3/v3.4 work below was prepared on an older copy of the site and
   never pushed. Merged by hand onto the live repo, keeping everything added

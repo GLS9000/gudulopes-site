@@ -274,6 +274,31 @@ comments. Change a value, commit, whole site updates.
 
 ## 11. Changelog
 
+**2026-10-22 — v3.5: fixes from the October status check**
+- **Conductor gap closed.** `.hero-figure` now hides at 1100px, matching
+  `.stream-figure`. Before, the conductor vanished between 860px and 1100px.
+  The two breakpoints must stay equal (comment added in the CSS).
+- **Premiere bar added.** `.premiere-bar` styles in `css/style.css`, plus a
+  commented-out `<aside>` template at the top of `index.html`. Switch on per
+  premiere; wrap or delete again afterwards.
+- **"EMR" → "Eyes Moving Rapidly (EMR)"** on Door of Sleep (tracklist, heading,
+  video title), matching the official title.
+- **Door of Forgetting in release order:** Mist, No Escape, Descent into the
+  Abyss, Tau, Contemplation. "Train Leaving" added as in progress, before the
+  finale "Will You Let Me Go".
+- Stylesheet cache version bumped `v=14` → `v=15` on all pages.
+
+**2026-10-22 — housekeeping (owner)**
+- Bio: "Cape Verde" → "Cabo Verde". `START-HERE_context.md` removed from the
+  public repo.
+
+**2026-07-28/30 — banners, stories, Idalina Lopes page (owner)**
+- Hero banners for Door of Sleep, Door of Forgetting and Boku no Sekai.
+- Door of Sleep song stories and streaming buttons filled in.
+- New page `idalina-lopes.html` (in sitemap and footers).
+- Broken `VIDEO_ID` embeds on Madness/Death replaced with commented templates;
+  unused `@font-face` rules and duplicate portrait images removed.
+
 **2026-07-23 — v3.2: Sleep labelled "Album"**
 - Set Door of Sleep release line to "Album" per artist decision.
 

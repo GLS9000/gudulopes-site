@@ -74,6 +74,7 @@ gudulopes-site/
 │   ├── favicon-32.png        # 32×32 tab icon (now referenced)
 │   ├── sleep-cover.jpg       # ✅ EMBEDDED — Door of Sleep cover (1000×1000, optimised)
 │   ├── kompas-cover.jpg      # ✅ EMBEDDED — used as the Boku no Sekai / Kompas cover
+│   ├── wylmg-cover.jpg       # ✅ EMBEDDED — Will You Let Me Go single cover (Door of Forgetting page)
 │   ├── forgetting-cover.jpg  # ‹— still to upload; page shows a text placeholder until then
 │   ├── madness-cover.jpg     # ‹— still to upload
 │   └── death-cover.jpg       # ‹— still to upload
@@ -273,6 +274,25 @@ comments. Change a value, commit, whole site updates.
 ---
 
 ## 11. Changelog
+
+**2026-11-05 — v3.8: Will You Let Me Go release (merge after Fri 13 Nov, 19:00 CET)**
+- **Door of Forgetting:** album intro added, in Gudu's own words ("the many
+  shapes of letting go"). Tracklist corrected: **Will You Let Me Go is track 6**,
+  **Train Leaving is track 7** — the closing track, still in progress.
+- **New song block for Will You Let Me Go** (anchor `#will-you-let-me-go`):
+  music video, a release card (cover `wylmg-cover.jpg`, the five tracks of the
+  single, Spotify / Apple Music buttons), the story in Gudu's words, lyrics in a
+  click-to-open box, and the credit line. A draft transparency line and four
+  version-video slots (Paizinho, Mãezinha, Easy Come Easy Go Instrumental,
+  Instrumental dos Pais) are in place but **commented out** until each is ready.
+- "Still to come" now lists only Train Leaving.
+- **Homepage Watch slot → Will You Let Me Go**, caption links to the story.
+  Contemplation stays on the Door of Forgetting page (its permanent home).
+- New image `wylmg-cover.jpg` (3780×3780 PNG, 31 MB → 1000×1000 JPEG, 257 KB).
+- New CSS: `.single-head` (release card inside a song block), `.lyrics`,
+  `.version-title`, `.credit-line`. Stylesheet cache version bumped to `v=17`
+  on all pages.
+- **No premiere bar** — this release is not a YouTube Premiere.
 
 **2026-11-05 — v3.7.1: Door of Forgetting track order**
 - Tracks 6 and 7 swapped: **6 Will You Let Me Go**, **7 Train Leaving** (the

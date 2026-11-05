@@ -274,6 +274,10 @@ comments. Change a value, commit, whole site updates.
 
 ## 11. Changelog
 
+**2026-11-05 — v3.7.1: Door of Forgetting track order**
+- Tracks 6 and 7 swapped: **6 Will You Let Me Go**, **7 Train Leaving** (the
+  closing track). Same order in the "Still to come" list.
+
 **2026-11-05 — v3.7: new tagline and definition**
 - **Homepage tagline** (under the name) is now: "Cinematic music with
   hip-hop roots — soundtracks to the places inside my mind." Replaces

@@ -619,6 +619,42 @@ footer p { color: var(--text-muted); font-size: 0.85rem; }
 .track-story p { margin-bottom: 1rem; }
 .track-story:empty { margin-top: 0; }
 
+/* --- SINGLE RELEASE CARD (inside a song block) ----------------------------- */
+/* Cover + track list + streaming buttons for a single with its own artwork
+   (first used for Will You Let Me Go). Reuses .cover, .release-meta,
+   .tracklist and .listen-actions from the album head above. */
+.single-head {
+    display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+    margin-top: 1.75rem;
+}
+.single-head .cover { max-width: 280px; }
+@media (min-width: 640px) {
+    .single-head { grid-template-columns: 200px 1fr; align-items: start; }
+    .single-head .cover { max-width: none; }
+}
+.single-head .listen-actions { margin-top: 1rem; }
+.track .version-title { font-size: 1.15rem; margin: 2.25rem 0 1rem; }
+.credit-line { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 0.04em; margin-top: 1rem; }
+
+/* --- LYRICS (click to open — plain HTML, no JavaScript) ------------------- */
+.lyrics {
+    margin-top: 1.5rem;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--bg-elevated);
+}
+.lyrics summary {
+    cursor: pointer; padding: 0.9rem 1.1rem;
+    font-family: var(--font-display); letter-spacing: 0.14em; color: var(--text);
+}
+.lyrics summary:hover { color: var(--accent); }
+.lyrics-body { padding: 0 1.1rem 1.25rem; color: var(--text-muted); line-height: 1.75; }
+.lyrics-body h3 {
+    font-family: var(--font-body); font-weight: 700;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin: 1.25rem 0 0.35rem;
+}
+.lyrics-body h3:first-child { margin-top: 0.25rem; }
+
 /* --- BANDCAMP / GENERIC CTA BUTTON --------------------------------------- */
 .btn-listen {
     display: inline-flex; align-items: center; gap: 0.5rem;

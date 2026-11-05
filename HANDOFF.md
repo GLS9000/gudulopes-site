@@ -274,6 +274,26 @@ comments. Change a value, commit, whole site updates.
 
 ## 11. Changelog
 
+**2026-11-05 — v3.7: new tagline and definition**
+- **Homepage tagline** (under the name) is now: "Cinematic music with
+  hip-hop roots — soundtracks to the places inside my mind." Replaces
+  "Composer & producer from Ghent — from orchestral hip-hop to Dutch rap."
+  _Why (decided in the release project, 5 Nov 2026):_ it says what a visitor
+  will hear instead of listing genres; Dutch rap moves to its own channel;
+  first person matches the site's voice; "roots", not "beats", stays true for
+  the ambient tracks. Don't revert.
+- **Definition** added as the first paragraph of the homepage About section,
+  word for word. The old sentence "His Four Doors of the Mind series threads
+  deeply human experiences…" was removed because the definition now says it;
+  "Alongside it" became "Alongside his cinematic work".
+- **Search / share description** of the homepage now opens with the
+  third-person tagline ("…inside his mind").
+- **`og-image.png`** (the card shown when the site is shared): the line
+  "Cinematic orchestral hip-hop & Dutch / Flemish rap — from Ghent." replaced
+  by the new tagline, same font, size and position. Nothing else on the card
+  changed. Social apps cache this image, so old shares may show the old card
+  for a while.
+
 **2026-10-22 — v3.6: streaming card de-duplicated, Bandcamp added**
 - The "or streaming my music on" row no longer repeats Spotify and YouTube
   (they are already the two Follow / Subscribe buttons above it). Row is now

@@ -274,6 +274,21 @@ comments. Change a value, commit, whole site updates.
 
 ## 11. Changelog
 
+**2026-11-13 — v3.9: Will You Let Me Go release**
+- Homepage "Watch": video `qoFfPyTDzUM`, caption "Will You Let Me Go — from
+  Door of Forgetting", plus the EP's Spotify + Apple Music buttons under it.
+- Door of Forgetting: track 6 no longer "in progress"; new song block 06 with
+  the video, Gudu's own story text (word for word from his document), and the
+  EP's streaming buttons. "Still to come" now lists only Train Leaving.
+- Door of Forgetting door intro (top of the page) filled with Gudu's own
+  paragraph about the album. His texts are his voice: don't rewrite them.
+  Typos and spelling (e.g. "Cabo Verdean") are corrected — owner's standing OK.
+- New `assets/images/wylmg-cover.jpg` (1000×1000, from the 3780px master) used
+  as the Door of Forgetting share image. It is NOT the album cover
+  (`forgetting-cover.jpg` stays empty until the album has art).
+- Push only after the video is public (19:00 CET, 13 Nov) — before that the
+  embed shows "Video unavailable".
+
 **2026-11-13 — v3.8: visitor counter (GoatCounter)**
 - One GoatCounter script line added just above `</body>` on all nine pages.
   No cookies, no consent banner needed. Stats: https://guduboy.goatcounter.com

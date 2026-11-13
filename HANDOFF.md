@@ -274,6 +274,21 @@ comments. Change a value, commit, whole site updates.
 
 ## 11. Changelog
 
+**2026-11-13 — v3.8: visitor counter (GoatCounter)**
+- One GoatCounter script line added just above `</body>` on all nine pages.
+  No cookies, no consent banner needed. Stats: https://guduboy.goatcounter.com
+- Reverses the earlier "no analytics" note: GoatCounter avoids the privacy
+  trade-off that note was about (owner's decision, WYLMG release day).
+- A new page needs the same line, or its visits aren't counted.
+
+**2026-11-05 — v3.7.2: Bandcamp icon in the streaming card → follow link**
+- The Bandcamp icon in the homepage "Support me by" card now points to
+  `https://gudulopes.bandcamp.com/follow_me` (Bandcamp's follow link)
+  instead of the plain artist page. Label, icon, layout and new-tab
+  behaviour unchanged (owner's request).
+- Only that one link changed. The footer Bandcamp icons on every page and
+  the homepage's structured data keep the plain profile URL on purpose.
+
 **2026-11-05 — v3.7.1: Door of Forgetting track order**
 - Tracks 6 and 7 swapped: **6 Will You Let Me Go**, **7 Train Leaving** (the
   closing track). Same order in the "Still to come" list.
